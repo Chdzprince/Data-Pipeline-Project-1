@@ -61,7 +61,7 @@ def transform_data(**kwargs):
 
     # AWS S3 configuration
     s3_client = boto3.client('s3')
-    bucket_name = 'mazziairflowbucket'
+    bucket_name = '[input your s3 bucket name here]'
 
     # Filename with timestamp
     now = datetime.now()
@@ -101,8 +101,8 @@ with DAG(
     # Check if the weather API is ready
     is_weather_api_ready = HttpSensor(
         task_id='is_weather_api_ready',
-        http_conn_id='weather_api',  # Connection ID configured in Airflow
-        endpoint='/data/2.5/weather?q=Dallas&appid=b174e84b8aeba9682168bc54cda2995f',
+        http_conn_id='weather_api',
+        endpoint='/data/2.5/weather?q=Dallas&appid=[input your API Key from OpenWeathermap]',
         poke_interval=10,
         timeout=600,
     )
@@ -111,7 +111,7 @@ with DAG(
     extract_weather_data = SimpleHttpOperator(
         task_id='extract_weather_data',
         http_conn_id='weather_api',
-        endpoint='/data/2.5/weather?q=Dallas&appid=b174e84b8aeba9682168bc54cda2995f',
+        endpoint='/data/2.5/weather?q=Dallas&appid=[input your API Key from OpenWeathermap]',
         method='GET',
         response_filter=lambda r: json.loads(r.text),
         log_response=True
