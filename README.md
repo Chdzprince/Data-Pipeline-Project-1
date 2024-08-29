@@ -4,7 +4,7 @@ This repository contains an Apache Airflow DAG that extracts weather data from a
 
 ## Features
 
-- Checks if the weather API is ready.
+- Checks if the weather API is ready from https://openweathermap.org.
 - Extracts weather data for Dallas.
 - Transforms the data and uploads it to an S3 bucket as a CSV file without writing any file locally.
 
