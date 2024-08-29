@@ -1,6 +1,6 @@
 # Airflow DAG for Weather Data Extraction
 
-This repository contains an Apache Airflow DAG that extracts weather data from an API, transforms the data, and uploads it to an s3 bucket.
+This repository contains an Apache Airflow DAG that checks if https://openweathermap.org API is active, extracts weather data from the API, transforms the data, and uploads it to an s3 bucket.
 
 ## Features
 
